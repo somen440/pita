@@ -18,9 +18,31 @@ export class BruteForce {
   }
 
   Next(current: Array<number>): Array<number> {
+    const next = [...Array(this.digits)].map(() => 0);
+
     if (current[0] >= this.max) {
-      return [...Array(this.digits)].map(() => 0);
+      return next;
     }
-    return current.map(e => e + 1);
+
+    current.forEach((value, index) => {
+      if (next[index] !== 0) {
+        return;
+      }
+
+      next[index] = value + 1;
+      if (next.length <= index + 1) {
+        return;
+      }
+
+      for (let i = this.min; i <= this.max; i++) {
+        if (next[index] === i) {
+          continue;
+        }
+        next[index + 1] = i;
+        break;
+      }
+    });
+
+    return next;
   }
 }

@@ -32,4 +32,22 @@ describe("Brute Force", () => {
       });
     });
   });
+
+  describe("2 桁", () => {
+    const min = 1;
+    const max = 2;
+    const digits = 2;
+    const bruteForce = new BruteForce(min, max, digits);
+
+    [
+      { current: [0, 0], next: [1, 2] },
+      { current: [1, 2], next: [2, 1] },
+      { current: [2, 1], next: [0, 0] }
+    ].forEach(({ current, next }) => {
+      it(`${current} の次は ${next}`, () => {
+        const actual = bruteForce.Next(current);
+        expect(next).toMatchObject(actual);
+      });
+    });
+  });
 });
