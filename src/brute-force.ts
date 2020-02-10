@@ -16,4 +16,11 @@ export class BruteForce {
       digits: this.digits
     };
   }
+
+  Next(current: Array<number>): Array<number> {
+    if (current[0] >= this.max) {
+      return [...Array(this.digits)].map(() => 0);
+    }
+    return current.map(e => e + 1);
+  }
 }
