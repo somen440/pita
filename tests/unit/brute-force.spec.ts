@@ -61,4 +61,19 @@ describe("Brute Force", () => {
       });
     });
   });
+
+  describe("9 桁", () => {
+    const min = 1;
+    const max = 9;
+    const bruteForce = new BruteForce(min, max);
+
+    it("ほげ", () => {
+      const expectCount = 362880;
+      let actualCount = 0;
+      bruteForce.Run(0, () => {
+        actualCount++;
+      });
+      expect(expectCount.toString()).toMatch(actualCount.toString());
+    });
+  });
 });
