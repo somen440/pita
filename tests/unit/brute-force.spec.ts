@@ -92,6 +92,7 @@ describe("Brute Force", () => {
         expect(actual).toStrictEqual(expects[current]);
         current++;
       }
+      expect(current).toStrictEqual(2);
     });
   });
 
@@ -114,6 +115,7 @@ describe("Brute Force", () => {
         expect(actual).toStrictEqual(expects[current]);
         current++;
       }
+      expect(current).toStrictEqual(6);
     });
   });
 });
