@@ -34,4 +34,22 @@ export class BruteForce {
       this.data[index] = 0;
     }
   }
+
+  *RunGene(index: number): any {
+    for (let i = 0; i < this.data.length; i++) {
+      for (let j = this.min; j <= this.max; j++) {
+        if (this.data.includes(j)) {
+          continue;
+        }
+        this.data[index] = j;
+        if (!this.data.includes(0)) {
+          yield this.data;
+        }
+        if (i !== this.data.length - 1) {
+          break;
+        }
+        this.data[i] = 0;
+      }
+    }
+  }
 }

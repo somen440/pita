@@ -76,4 +76,44 @@ describe("Brute Force", () => {
       expect(expectCount.toString()).toMatch(actualCount.toString());
     });
   });
+
+  describe("ジェネレーター 1", () => {
+    const min = 1;
+    const max = 2;
+    const bruteForce = new BruteForce(min, max);
+
+    it("ほげ", () => {
+      const expects = [
+        [1, 2],
+        [2, 1]
+      ];
+      let current = 0;
+      for (const actual of bruteForce.RunGene(0)) {
+        expect(actual).toStrictEqual(expects[current]);
+        current++;
+      }
+    });
+  });
+
+  describe("ジェネレーター 2", () => {
+    const min = 1;
+    const max = 3;
+    const bruteForce = new BruteForce(min, max);
+
+    it("ほげ", () => {
+      const expects = [
+        [1, 2, 3],
+        [1, 3, 2],
+        [2, 1, 3],
+        [2, 3, 1],
+        [3, 1, 2],
+        [3, 2, 1]
+      ];
+      let current = 0;
+      for (const actual of bruteForce.RunGene(0)) {
+        expect(actual).toStrictEqual(expects[current]);
+        current++;
+      }
+    });
+  });
 });
