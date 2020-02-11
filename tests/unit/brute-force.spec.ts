@@ -4,31 +4,22 @@ describe("Brute Force", () => {
   it("初期化", () => {
     const min = 1;
     const max = 3;
-    const digits = 2;
     const param = {
       min,
-      max,
-      digits
+      max
     };
-    const bruteForce = new BruteForce(min, max, digits);
+    const bruteForce = new BruteForce(min, max);
     expect(param).toMatchObject(bruteForce.Params());
   });
 
   describe("最小限 1 桁", () => {
     const min = 1;
-    const max = 3;
-    const digits = 1;
-    const bruteForce = new BruteForce(min, max, digits);
+    const max = 1;
+    const bruteForce = new BruteForce(min, max);
 
-    [
-      { current: [0], next: [1] },
-      { current: [1], next: [2] },
-      { current: [2], next: [3] },
-      { current: [3], next: [0] }
-    ].forEach(({ current, next }) => {
-      it(`${current} の次は ${next}`, () => {
-        const actual = bruteForce.Next(current);
-        expect(next).toMatchObject(actual);
+    it("ほげ", () => {
+      bruteForce.Run(0, data => {
+        expect([1]).toMatchObject(data);
       });
     });
   });
@@ -36,17 +27,37 @@ describe("Brute Force", () => {
   describe("2 桁", () => {
     const min = 1;
     const max = 2;
-    const digits = 2;
-    const bruteForce = new BruteForce(min, max, digits);
+    const bruteForce = new BruteForce(min, max);
 
-    [
-      { current: [0, 0], next: [1, 2] },
-      { current: [1, 2], next: [2, 1] },
-      { current: [2, 1], next: [0, 0] }
-    ].forEach(({ current, next }) => {
-      it(`${current} の次は ${next}`, () => {
-        const actual = bruteForce.Next(current);
-        expect(next).toMatchObject(actual);
+    it("ほげ", () => {
+      let expectsIndex = 0;
+      const expects = [
+        [1, 2],
+        [2, 1]
+      ];
+      bruteForce.Run(0, data => {
+        expect(expects[expectsIndex++]).toMatchObject(data);
+      });
+    });
+  });
+
+  describe("3 桁", () => {
+    const min = 1;
+    const max = 3;
+    const bruteForce = new BruteForce(min, max);
+
+    it("ほげ", () => {
+      let expectsIndex = 0;
+      const expects = [
+        [1, 2, 3],
+        [1, 3, 2],
+        [2, 1, 3],
+        [2, 3, 1],
+        [3, 1, 2],
+        [3, 2, 1]
+      ];
+      bruteForce.Run(0, data => {
+        expect(expects[expectsIndex++]).toMatchObject(data);
       });
     });
   });
