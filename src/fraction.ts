@@ -1,5 +1,12 @@
 export type AllowNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
+export function isAllowNumber(num: number): num is AllowNumber {
+  if (1 <= num && num <= 9) {
+    return true;
+  }
+  return false;
+}
+
 //  a
 // ----
 //  bc
